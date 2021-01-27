@@ -1,0 +1,2 @@
+# similefy
+Text compare app
