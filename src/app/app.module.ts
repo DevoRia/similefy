@@ -29,7 +29,19 @@ import { SettingsPageComponent } from './pages/settings-page/settings-page.compo
 import { LoginPopupComponent } from './components/popups/login-popup/login-popup.component';
 import { UploadPopupComponent } from './components/popups/upload-popup/upload-popup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from "@angular/common/http";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
+export function playerFactory() {
+  return player;
+}
 
 @NgModule({
   declarations: [
@@ -63,6 +75,15 @@ import { HttpClientModule } from "@angular/common/http";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    LottieModule.forRoot({ player: playerFactory }),
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
