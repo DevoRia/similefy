@@ -12,7 +12,7 @@
   <div *ngIf="!loading" class="library-container">
     <div class="header-library">
       <h1>{{ "library.title" | translate }}</h1>
-      <button mat-flat-button color="primary">{{ "library.newProject" | translate }}</button>
+      <button (click)="openUploadPopup()" mat-flat-button color="primary">{{ "library.newProject" | translate }}</button>
     </div>
     <div *ngIf="!isEmpty()"  class="card-container">
       <app-card></app-card>

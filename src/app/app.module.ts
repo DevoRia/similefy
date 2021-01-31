@@ -38,6 +38,7 @@ import { ToolbarOptionsComponent } from './components/toolbar-options/toolbar-op
 import { CardComponent } from './components/card/card.component';
 import { EmptyProjectsComponent } from './components/empty-projects/empty-projects.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import {NgxFileDropModule} from "ngx-file-drop";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -83,6 +84,7 @@ export function playerFactory() {
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxFileDropModule,
     LottieModule.forRoot({ player: playerFactory }),
     TranslateModule.forRoot({
       defaultLanguage: 'en',
