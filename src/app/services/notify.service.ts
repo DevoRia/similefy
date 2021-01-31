@@ -9,7 +9,10 @@ export class NotifyService {
   constructor(private matSnackBar: MatSnackBar) { }
 
   showInfo(message: string) {
-    this.matSnackBar.open(message);
+    this.matSnackBar.open(message, '', {
+      duration: 2000,
+    }
+  );
   }
 
 }

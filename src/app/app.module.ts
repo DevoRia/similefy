@@ -36,6 +36,8 @@ import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
 import { ToolbarOptionsComponent } from './components/toolbar-options/toolbar-options.component';
 import { CardComponent } from './components/card/card.component';
+import { EmptyProjectsComponent } from './components/empty-projects/empty-projects.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -55,7 +57,9 @@ export function playerFactory() {
     LoginPopupComponent,
     UploadPopupComponent,
     ToolbarOptionsComponent,
-    CardComponent
+    CardComponent,
+    EmptyProjectsComponent,
+    LoaderComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

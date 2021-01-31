@@ -9,13 +9,15 @@
 
 <div class="container">
   <div style="width: 10%"></div>
-  <div class="library-container">
+  <div *ngIf="!loading" class="library-container">
     <div class="header-library">
       <h1>{{ "library.title" | translate }}</h1>
       <button mat-flat-button color="primary">{{ "library.newProject" | translate }}</button>
     </div>
-    <div class="card-container">
+    <div *ngIf="!isEmpty()"  class="card-container">
       <app-card></app-card>
     </div>
+    <app-empty-projects *ngIf="isEmpty()"></app-empty-projects>
   </div>
+  <app-loader class="library-container" *ngIf="loading"></app-loader>
 </div>

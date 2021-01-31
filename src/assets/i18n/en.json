@@ -1,7 +1,7 @@
 {
   "common": {
     "title": "Similefy",
-    "login": "Sign on",
+    "login": "Sign in",
     "logout": "Sign out"
   },
   "lead": {
@@ -11,6 +11,8 @@
   },
   "library": {
     "title": "Projects",
-    "newProject": "New Project"
+    "newProject": "New Project",
+    "emptyTitle": "Unfortunately, there is no projects here",
+    "emptyMessage": "Please click on New Project, to create project"
   }
 }
