@@ -1,1 +1,21 @@
-<p>library-page works!</p>
+<mat-toolbar class="toolbar-container" color="primary">
+  <mat-toolbar-row>
+    <div class="main-toolbar">
+      <div>{{ "common.title" | translate }}</div>
+      <app-toolbar-options></app-toolbar-options>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="container">
+  <div style="width: 10%"></div>
+  <div class="library-container">
+    <div class="header-library">
+      <h1>{{ "library.title" | translate }}</h1>
+      <button mat-flat-button color="primary">{{ "library.newProject" | translate }}</button>
+    </div>
+    <div class="card-container">
+      <app-card></app-card>
+    </div>
+  </div>
+</div>

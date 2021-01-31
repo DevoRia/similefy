@@ -18,4 +18,8 @@ export class AuthService {
     const provider = new auth.GoogleAuthProvider();
     await this.afAuth.signInWithPopup(provider);
   }
+
+  async logout() {
+    await this.afAuth.signOut();
+  }
 }

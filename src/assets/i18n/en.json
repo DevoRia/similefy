@@ -1,11 +1,16 @@
 {
   "common": {
     "title": "Similefy",
-    "login": "Sign on"
+    "login": "Sign on",
+    "logout": "Sign out"
   },
   "lead": {
     "title": "Similefy Your content",
     "text": "Make your notebook functions do faster...",
     "try": "Try it free"
+  },
+  "library": {
+    "title": "Projects",
+    "newProject": "New Project"
   }
 }
