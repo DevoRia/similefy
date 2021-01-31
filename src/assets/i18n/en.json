@@ -1,10 +1,11 @@
 {
   "common": {
-    "title": "Similefy"
+    "title": "Similefy",
+    "login": "Sign on"
   },
   "lead": {
     "title": "Similefy Your content",
     "text": "Make your notebook functions do faster...",
-    "try": "Try it!"
+    "try": "Try it free"
   }
 }

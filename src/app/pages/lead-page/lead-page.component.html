@@ -1,0 +1,22 @@
+<mat-toolbar class="toolbar-container" color="primary">
+  <mat-toolbar-row>
+    <div>
+      <div>{{ "common.title" | translate }}</div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="container">
+  <div class="title-section">
+    <div class="main-text">
+      <h1>{{ "lead.title" | translate }}</h1>
+      <h2>{{ "lead.text" | translate }}</h2>
+      <button mat-flat-button color="primary" class="target-button" (click)="openLoginPopup()">
+        {{ "lead.try" | translate }}
+      </button>
+    </div>
+    <div class="illustration">
+      <ng-lottie width="600px" height="700px" [options]="animationOptions"></ng-lottie>
+    </div>
+  </div>
+</div>
