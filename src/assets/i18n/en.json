@@ -2,7 +2,15 @@
   "common": {
     "title": "Similefy",
     "login": "Sign in",
-    "logout": "Sign out"
+    "logout": "Sign out",
+    "signup": "Sign up"
+  },
+  "login": {
+    "popupDescription": "Choose sign-in method",
+    "email": "Email",
+    "password": "Password",
+    "invitation": "Check your mailbox",
+    "forgotPassword": "Forgot password?"
   },
   "lead": {
     "title": "Similefy Your content",

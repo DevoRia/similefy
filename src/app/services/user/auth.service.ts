@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import firebase from "firebase";
-import {LocalizationService} from "../settings/localization.service";
 import {AngularFireAuth} from "@angular/fire/auth";
-import {Observable} from "rxjs";
-import {User} from "../../models/user/user";
 import auth = firebase.auth;
+import {AuthMode} from "./auth.mode";
+import {UtilsService} from "../utils.service";
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +13,30 @@ export class AuthService {
   constructor(private afAuth: AngularFireAuth) {
   }
 
-  async login() {
+  async signUp(email: string) {
+    await this.afAuth.createUserWithEmailAndPassword(email, UtilsService.generateRandomPassword());
+    await this.afAuth.sendPasswordResetEmail(email);
+    await this.afAuth.signOut();
+  }
+
+  async forgotPassword(email: string) {
+    await this.afAuth.sendPasswordResetEmail(email);
+  }
+
+  async login(mode: AuthMode): Promise<any> {
+    switch (mode) {
+      case AuthMode.GOOGLE: return await this.googleLogin()
+      case AuthMode.EMAIL: return this.emailLogin.bind(this)
+    }
+  }
+
+  async googleLogin() {
     const provider = new auth.GoogleAuthProvider();
     await this.afAuth.signInWithPopup(provider);
+  }
+
+  async emailLogin(email: string, password: string) {
+    await this.afAuth.signInWithEmailAndPassword(email, password);
   }
 
   async logout() {

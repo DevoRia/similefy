@@ -1,7 +1,29 @@
 <h1>{{"common.login" | translate}}</h1>
+<h2>{{"login.popupDescription" | translate}}</h2>
 <div class="login-methods">
-  <button mat-icon-button (click)="auth()">
+  <button mat-icon-button (click)="auth(authModes().GOOGLE)">
     <img width="25px"  height="25px" src="/assets/images/login/google_logo.png" alt="image">
   </button>
+</div>
+<div class="email-login">
+  <mat-form-field>
+    <input matInput placeholder="{{'login.email' | translate}}" [(ngModel)]="email">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="{{'login.password' | translate}}" [(ngModel)]="password">
+  </mat-form-field>
+  <div class="submit-email-login">
+    <button mat-button color="primary" (click)="auth(authModes().EMAIL)">
+      {{'common.login' | translate}}
+    </button>
+    <button mat-flat-button color="primary" (click)="signUp()">
+      {{'common.signup' | translate}}
+    </button>
+  </div>
+  <div class="login-options">
+    <button  mat-button color="primary" (click)="forgotPassword()">
+      {{'login.forgotPassword' | translate}}
+    </button>
+  </div>
 </div>
 

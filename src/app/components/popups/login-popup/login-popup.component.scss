@@ -2,3 +2,24 @@
   display: flex;
   justify-content: center;
 }
+
+.email-login {
+  display: flex;
+  flex-direction: column;
+}
+
+.submit-email-login {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.login-options {
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+
+  ::ng-deep .mat-button {
+    font-size: 0.8em;
+  }
+}
