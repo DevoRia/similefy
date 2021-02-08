@@ -1,7 +1,10 @@
 <mat-toolbar class="toolbar-container" color="primary">
   <mat-toolbar-row>
-    <div>
+    <div class="main-toolbar">
       <div>{{ "common.title" | translate }}</div>
+      <div class="toolbar-container">
+        <button mat-button (click)="openLoginPopup()" class="sign-out">{{ "common.login" | translate }}</button>
+      </div>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

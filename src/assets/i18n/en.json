@@ -3,7 +3,9 @@
     "title": "Similefy",
     "login": "Sign in",
     "logout": "Sign out",
-    "signup": "Sign up"
+    "signup": "Sign up",
+    "browseFiles": "Browse Files",
+    "dropFile": "Drop simple file"
   },
   "login": {
     "popupDescription": "Choose sign-in method",

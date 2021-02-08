@@ -43,3 +43,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   width: 100%;
   height: 90%;
 }
+
+.main-toolbar {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dnd-area {
+  width: 100%;
+  border: 3px dotted #0782d0;
+  background: #ffffff;
+}
