@@ -5,3 +5,24 @@
 .dnd {
   width: 300px;
 }
+
+.project-name {
+  width: 300px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dnd {
+    animation: dnd 0.5s alternate;
+  }
+}
+
+@keyframes dnd {
+  from {
+    transform: scale(0);
+    filter: blur(4rem);
+  }
+  to {
+    transform: scale(1);
+    filter: blur(0);
+  }
+}

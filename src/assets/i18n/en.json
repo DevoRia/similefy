@@ -5,7 +5,8 @@
     "logout": "Sign out",
     "signup": "Sign up",
     "browseFiles": "Browse Files",
-    "dropFile": "Drop simple file"
+    "dropFile": "Drop simple file",
+    "name": "Name"
   },
   "login": {
     "popupDescription": "Choose sign-in method",
@@ -24,5 +25,9 @@
     "newProject": "New Project",
     "emptyTitle": "Unfortunately, there is no projects here",
     "emptyMessage": "Please click on New Project, to create project"
+  },
+  "upload": {
+    "folderNotSupport": "Folder is not supported",
+    "fileTypeNotSupport": "{{type}} is not supported"
   }
 }

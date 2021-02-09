@@ -2,7 +2,10 @@
   <div>
     <h1>{{"common.dropFile" | translate}}</h1>
   </div>
-  <div class="dnd">
+  <mat-form-field class="project-name">
+    <input [(ngModel)]="name" type="text" matInput placeholder="{{'common.name' | translate}}">
+  </mat-form-field>
+  <div *ngIf="name" class="dnd" >
     <ngx-file-drop dropZoneClassName="dnd-area" (onFileDrop)="dropped($event)"
                    (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
       <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">

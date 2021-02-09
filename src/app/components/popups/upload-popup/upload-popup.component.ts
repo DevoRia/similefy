@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FileSystemDirectoryEntry, FileSystemFileEntry, NgxFileDropEntry} from "ngx-file-drop";
+import {FileSystemFileEntry, NgxFileDropEntry} from "ngx-file-drop";
+import {NotifyService} from "../../../services/notify.service";
+import {TranslateService} from "@ngx-translate/core";
+import {TypeService} from "../../../services/file/type.service";
+import {ProjectService} from "../../../services/project/project.service";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   templateUrl: './upload-popup.component.html',
@@ -7,24 +12,52 @@ import {FileSystemDirectoryEntry, FileSystemFileEntry, NgxFileDropEntry} from "n
 })
 export class UploadPopupComponent implements OnInit {
 
-  public files: NgxFileDropEntry[] = [];
+  name: string;
+  public files: File[] = [];
+  private filesLength: number;
 
-  constructor() { }
+  constructor(private notifyService: NotifyService,
+              private translateService: TranslateService,
+              private typeService: TypeService,
+              public dialog: MatDialog,
+              private projectService: ProjectService) { }
 
   ngOnInit(): void {
   }
 
-  public dropped(files: NgxFileDropEntry[]) {
-    this.files = files;
-    for (const droppedFile of files) {
-      if (droppedFile.fileEntry.isFile) {
-        const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
-        fileEntry.file((file: File) => {
-          console.log(droppedFile.relativePath, file);
-        });
-      } else {
-        const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
-        console.log(droppedFile.relativePath, fileEntry);
+  public async dropped(files: NgxFileDropEntry[]) {
+    this.filesLength = this.files.length;
+    const promises = files.map(droppedFile => {
+      return new Promise((resolve, reject) => {
+        if (droppedFile.fileEntry.isFile) {
+          const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
+          fileEntry.file((file: File) => {
+            if (this.typeService.isSupportedType(file.type)) {
+              this.files.push(file)
+              resolve();
+            } else {
+              this.notifyService.showInfo(this.translateService.instant("upload.fileTypeNotSupport", {type: file.type}))
+              reject();
+            }
+          });
+        } else {
+          this.notifyService.showInfo(this.translateService.instant("upload.folderNotSupport"))
+          this.filesLength--;
+          resolve();
+        }
+      })
+    });
+    await Promise.all(promises);
+    await this.uploadFiles();
+  }
+
+  private async uploadFiles() {
+    if (this.files.length && this.files.length <= 2) {
+      try {
+        await this.projectService.create(this.name, this.files)
+        this.dialog.closeAll();
+      } catch (e) {
+        this.notifyService.showInfo(e.message);
       }
     }
   }

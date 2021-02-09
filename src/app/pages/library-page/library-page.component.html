@@ -15,7 +15,7 @@
       <button (click)="openUploadPopup()" mat-flat-button color="primary">{{ "library.newProject" | translate }}</button>
     </div>
     <div *ngIf="!isEmpty()"  class="card-container">
-      <app-card></app-card>
+      <app-card *ngFor="let project of projects" [project]="project"></app-card>
     </div>
     <app-empty-projects *ngIf="isEmpty()"></app-empty-projects>
   </div>
