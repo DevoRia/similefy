@@ -1,0 +1,8 @@
+<div>
+  <h1>{{title | translate}}</h1>
+  <p>{{message | translate}}</p>
+</div>
+<div class="answers">
+  <button mat-button (click)="noClick()">{{"common.no" | translate}}</button>
+  <button mat-button color="warn" (click)="yesClick()">{{"common.yes" | translate}}</button>
+</div>

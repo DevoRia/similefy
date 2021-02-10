@@ -1,10 +1,17 @@
-<mat-card class="card">
+<mat-card class="card" (click)="open()">
   <div>
     <h2 class="header">{{project.name}}</h2>
   </div>
   <div>
-    <button mat-icon-button>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
   </div>
 </mat-card>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="remove()">
+    <mat-icon>delete</mat-icon>
+    <span>{{"common.remove" | translate}}</span>
+  </button>
+</mat-menu>

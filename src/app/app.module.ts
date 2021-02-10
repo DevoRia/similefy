@@ -39,6 +39,7 @@ import { CardComponent } from './components/card/card.component';
 import { EmptyProjectsComponent } from './components/empty-projects/empty-projects.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import {NgxFileDropModule} from "ngx-file-drop";
+import { ConfirmPopupComponent } from './components/popups/confirm-popup/confirm-popup.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -60,7 +61,8 @@ export function playerFactory() {
     ToolbarOptionsComponent,
     CardComponent,
     EmptyProjectsComponent,
-    LoaderComponent
+    LoaderComponent,
+    ConfirmPopupComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

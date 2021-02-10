@@ -26,4 +26,8 @@ export class ProjectService {
     project.source = JSON.stringify(project.source);
     return this.projectRepo.create(project).toPromise();
   }
+
+  async remove(id): Promise<void> {
+    return await this.projectRepo.remove(id).toPromise();
+  }
 }
