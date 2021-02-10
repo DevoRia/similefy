@@ -4,13 +4,15 @@ import {AngularFireAuth} from "@angular/fire/auth";
 import auth = firebase.auth;
 import {AuthMode} from "./auth.mode";
 import {UtilsService} from "../utils.service";
+import {SubscriptionManagerService} from "../subscription-manager.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private afAuth: AngularFireAuth) {
+  constructor(private afAuth: AngularFireAuth,
+              private subscriptionManagerService: SubscriptionManagerService) {
   }
 
   async signUp(email: string) {
@@ -40,6 +42,7 @@ export class AuthService {
   }
 
   async logout() {
+    this.subscriptionManagerService.clear();
     await this.afAuth.signOut();
   }
 

@@ -5,28 +5,25 @@ import {NotifyService} from "../../services/notify.service";
 import {MatDialog} from "@angular/material/dialog";
 import {UploadPopupComponent} from "../../components/popups/upload-popup/upload-popup.component";
 import {Subscription} from "rxjs";
+import {SubscriptionManagerService} from "../../services/subscription-manager.service";
 
 @Component({
   selector: 'app-library-page',
   templateUrl: './library-page.component.html',
   styleUrls: ['./library-page.component.scss']
 })
-export class LibraryPageComponent implements OnInit, OnDestroy {
+export class LibraryPageComponent implements OnInit {
 
   projects: Projects[] = []
   loading: boolean = true;
-  $findAll: Subscription;
 
   constructor(private projectRepo: ProjectRepositoryService,
               private notify: NotifyService,
+              private subscriptionManagerService: SubscriptionManagerService,
               private matDialog: MatDialog) { }
 
   ngOnInit(): void {
     this.findAll();
-  }
-
-  ngOnDestroy(): void {
-    this.$findAll.unsubscribe();
   }
 
   isEmpty() {
@@ -34,19 +31,17 @@ export class LibraryPageComponent implements OnInit, OnDestroy {
   }
 
   findAll() {
-    this.$findAll = this.projectRepo.findAll()
+    const $findAll = this.projectRepo.findAll()
       .subscribe(
         (projects) => {
           this.projects = projects;
           this.loading = false;
-          console.log(this.projects.length);
         },
         (err) => {
-          this.$findAll.unsubscribe();
           this.notify.showInfo(err.message);
           this.loading = false;
-        }
-        )
+        })
+    this.subscriptionManagerService.addSubscription('findAll', $findAll);
   }
 
   openUploadPopup() {
