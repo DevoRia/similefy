@@ -3,6 +3,7 @@ import {Project} from "../../models/project/project";
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmPopupComponent} from "../popups/confirm-popup/confirm-popup.component";
 import {ProjectService} from "../../services/project/project.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-card',
@@ -15,6 +16,7 @@ export class CardComponent implements OnInit {
   project: Project
 
   constructor(
+    private router: Router,
     public dialog: MatDialog,
     private projectService: ProjectService
   ) { }
@@ -23,7 +25,7 @@ export class CardComponent implements OnInit {
   }
 
   open(): void {
-
+    this.router.navigate(['compare', this.project.id])
   }
 
   remove(): void {

@@ -11,6 +11,9 @@ export class SubscriptionManagerService {
   constructor() { }
 
   addSubscription(key: string, subscription: Subscription) {
+    if (this.subscriptions[key]) {
+      this.subscriptions[key].unsubscribe();
+    }
     this.subscriptions[key] = subscription;
   }
 
