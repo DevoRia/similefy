@@ -31,6 +31,9 @@
     "removeTitle": "Remove the project",
     "removeMessage": "Are sure to remove this project?"
   },
+  "compare": {
+    "placeholder": "Input some text..."
+  },
   "upload": {
     "folderNotSupport": "Folder is not supported",
     "fileTypeNotSupport": "{{type}} is not supported"

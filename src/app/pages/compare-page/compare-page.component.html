@@ -11,11 +11,15 @@
   <div style="width: 10%"></div>
   <div *ngIf="!loading" class="page-container">
     <div class="header-library">
-      <h1>{{ "library.title" | translate }}</h1>
+      <div class="header-title">
+        <app-back-button></app-back-button>
+        <h1 *ngIf="project">{{ project.name }}</h1>
+      </div>
+
     </div>
     <div class="compare-aries">
-      <app-compare-area ></app-compare-area>
-      <app-compare-area></app-compare-area>
+      <app-compare-area  [index]="0"></app-compare-area>
+      <app-compare-area [index]="1"></app-compare-area>
     </div>
   </div>
   <app-loader class="page-container" *ngIf="loading"></app-loader>

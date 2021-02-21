@@ -4,6 +4,8 @@ import {NotifyService} from "../../services/notify.service";
 import {SubscriptionManagerService} from "../../services/subscription-manager.service";
 import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
+import {Project} from "../../models/project/project";
+import {ProjectService} from "../../services/project/project.service";
 
 @Component({
   selector: 'app-compare-page',
@@ -12,16 +14,22 @@ import {Router} from "@angular/router";
 })
 export class ComparePageComponent implements OnInit {
 
-  loading: boolean = false;
+  loading: boolean = true;
+  project: Project;
 
-  constructor(private projectRepo: ProjectRepositoryService,
+  constructor(private projectService: ProjectService,
               private notify: NotifyService,
               private router: Router,
               private matDialog: MatDialog) { }
 
   ngOnInit(): void {
     const [,,id] = this.router.url.split('/');
-    this.projectRepo.findById(id)
+    const project$ = this.projectService.getProjectById(id)
+      .subscribe((project) => {
+        this.project = project;
+        project$.unsubscribe();
+        this.loading = false;
+      })
   }
 
 

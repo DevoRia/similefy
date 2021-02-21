@@ -41,6 +41,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import {NgxFileDropModule} from "ngx-file-drop";
 import { ConfirmPopupComponent } from './components/popups/confirm-popup/confirm-popup.component';
 import { CompareAreaComponent } from './components/compare-area/compare-area.component';
+import { BackButtonComponent } from './components/back-button/back-button.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -64,7 +65,8 @@ export function playerFactory() {
     EmptyProjectsComponent,
     LoaderComponent,
     ConfirmPopupComponent,
-    CompareAreaComponent
+    CompareAreaComponent,
+    BackButtonComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
