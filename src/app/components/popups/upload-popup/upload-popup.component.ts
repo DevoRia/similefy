@@ -54,8 +54,8 @@ export class UploadPopupComponent implements OnInit {
   private async uploadFiles() {
     if (this.files.length && this.files.length <= 2) {
       try {
+        this.dialog.closeAll()
         await this.projectService.create(this.name, this.files)
-        this.dialog.closeAll();
       } catch (e) {
         this.notifyService.showInfo(e.message);
       }
