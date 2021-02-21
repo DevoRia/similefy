@@ -3,6 +3,7 @@ import {ProjectRepositoryService} from "./project-repository.service";
 import {Project} from "../../models/project/project";
 import {Observable} from "rxjs";
 import {map, tap} from "rxjs/operators";
+import {CompareService} from "../compare/compare.service";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ export class ProjectService {
 
   private project: Project;
 
-  constructor(private projectRepo: ProjectRepositoryService) { }
+  constructor(private projectRepo: ProjectRepositoryService,
+              private compareService: CompareService) { }
 
   getProjectById(id: string): Observable<Project> {
     return this.projectRepo.findById(id)
@@ -28,7 +30,6 @@ export class ProjectService {
     if (typeof this.project.source !== 'string') {
       this.project.source[index] = content;
     }
-    console.log(this.project.source);
   }
 
   getContentByAreaIndex(index: number): Observable<string> {
@@ -36,7 +37,6 @@ export class ProjectService {
   }
 
   update() {
-    console.log(this.project);
     return this.projectRepo.update(this.project.id, this.project)
   }
 

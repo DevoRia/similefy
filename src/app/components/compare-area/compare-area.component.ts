@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProjectService} from "../../services/project/project.service";
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-compare-area',
@@ -11,6 +12,7 @@ export class CompareAreaComponent implements OnInit {
   @Input()
   private index: number;
 
+  public Editor = ClassicEditor;
   content: string = '';
   disabled: boolean = false;
   loading: boolean = false;
@@ -27,7 +29,7 @@ export class CompareAreaComponent implements OnInit {
   }
 
   onInput() {
-    this.projectService.changeContent(this.content, this.index)
+    this.projectService.changeContent(this.content.trim(), this.index)
   }
 
   onChange() {

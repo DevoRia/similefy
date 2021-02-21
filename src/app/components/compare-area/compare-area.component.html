@@ -1,15 +1,13 @@
 <div class="area">
   <mat-card>
     <app-loader *ngIf="loading" class="loader"></app-loader>
-    <mat-form-field floatLabel=never>
-      <textarea
-        [disabled]="disabled"
-        [(ngModel)]="content"
-        (input)="onInput()"
-        (change)="onChange()"
-        class="textarea"
-        matInput placeholder="{{'compare.placeholder' | translate}}"
-      ></textarea>
-    </mat-form-field>
+    <ckeditor
+      (change)="onInput()"
+      (blur)="onChange()"
+      class="textarea"
+      [config]="{toolbar: []}"
+      [(ngModel)]="content"
+      [editor]="Editor"
+    ></ckeditor>
   </mat-card>
 </div>

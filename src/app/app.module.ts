@@ -34,6 +34,7 @@ import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ToolbarOptionsComponent } from './components/toolbar-options/toolbar-options.component';
 import { CardComponent } from './components/card/card.component';
 import { EmptyProjectsComponent } from './components/empty-projects/empty-projects.component';
@@ -91,6 +92,7 @@ export function playerFactory() {
     FormsModule,
     ReactiveFormsModule,
     NgxFileDropModule,
+    CKEditorModule,
     LottieModule.forRoot({ player: playerFactory }),
     TranslateModule.forRoot({
       defaultLanguage: 'en',
