@@ -10,12 +10,20 @@ import {Router} from "@angular/router";
 })
 export class ToolbarOptionsComponent implements OnInit {
 
+  page: string = ''
+
   constructor(private authService: AuthService,
               private notify: NotifyService,
               private router: Router
   ) { }
 
   ngOnInit(): void {
+    const [,page] = this.router.url.split('/');
+    this.page = page;
+  }
+
+  async goToSettings() {
+    return this.router.navigate(['settings'])
   }
 
   async logout() {

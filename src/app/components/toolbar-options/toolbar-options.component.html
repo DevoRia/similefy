@@ -1,3 +1,4 @@
 <div class="toolbar-container">
+  <button *ngIf="page !== 'settings'" mat-icon-button (click)="goToSettings()"><mat-icon>settings</mat-icon></button>
   <button mat-button (click)="logout()" class="sign-out">{{ "common.logout" | translate }}</button>
 </div>

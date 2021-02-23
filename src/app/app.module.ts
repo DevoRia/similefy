@@ -12,6 +12,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatSelectModule} from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -85,6 +86,7 @@ export function playerFactory() {
     MatProgressSpinnerModule,
     MatButtonModule,
     MatInputModule,
+    MatSelectModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

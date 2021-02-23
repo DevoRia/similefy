@@ -1,0 +1,33 @@
+<mat-toolbar class="toolbar-container" color="primary">
+  <mat-toolbar-row>
+    <div class="main-toolbar">
+      <div>{{ "common.title" | translate }}</div>
+      <app-toolbar-options></app-toolbar-options>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="container">
+  <div style="width: 10%"></div>
+  <div *ngIf="!loading" class="page-container">
+    <div class="header-library">
+      <div class="header-title">
+        <app-back-button></app-back-button>
+        <h1>{{"settings.title" | translate}}</h1>
+      </div>
+    </div>
+    <div class="tabs">
+      <mat-card class="tab">
+        <mat-card-title><h3 style="margin: 0">{{"settings.language" | translate}}</h3></mat-card-title>
+        <mat-form-field appearance="fill">
+          <mat-label>{{"settings.chooseLanguage" | translate}}</mat-label>
+          <mat-select [value]="currentLocalization()" (valueChange)="setLocalization($event)" >
+            <mat-option *ngFor="let locale of getLocalizations()" [value]="locale">{{'localizations.' + locale | translate}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </mat-card>
+    </div>
+  </div>
+  <app-loader class="page-container" *ngIf="loading"></app-loader>
+</div>

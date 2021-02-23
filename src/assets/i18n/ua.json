@@ -2,7 +2,21 @@
   "common": {
     "title": "Similefy",
     "login": "Увійти",
-    "logout": "Вийти"
+    "logout": "Вийти",
+    "signup": "Реєстрація",
+    "browseFiles": "Завантажити файл",
+    "dropFile": "Створення проекту",
+    "name": "Назва",
+    "remove": "Видалити",
+    "yes": "Так",
+    "no": "Ні"
+  },
+  "login": {
+    "popupDescription": "Виберіть метод входу",
+    "email": "Email",
+    "password": "Пароль",
+    "invitation": "Перевірте поштову скриньку",
+    "forgotPassword": "Забули пароль?"
   },
   "lead": {
     "title": "Порівняй свій контент",
@@ -13,6 +27,24 @@
     "title": "Проекти",
     "newProject": "Створити",
     "emptyTitle": "На жаль, проектів тут немає",
-    "emptyMessage": "Натисніть Створити, щоб створити проект"
+    "emptyMessage": "Натисніть Створити, щоб створити проект",
+    "removeTitle": "Видалити проект",
+    "removeMessage": "Ви впевнені, що хочете видалити цей проект?"
+  },
+  "compare": {
+    "placeholder": "Введіть текст..."
+  },
+  "settings": {
+    "title": "Налаштування",
+    "language": "Мова",
+    "chooseLanguage": "Виберіть мову"
+  },
+  "localizations": {
+    "en": "Англійська",
+    "ua": "Українська"
+  },
+  "upload": {
+    "folderNotSupport": "Папки не підтримується",
+    "fileTypeNotSupport": "не підтримуються"
   }
 }

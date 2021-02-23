@@ -10,8 +10,8 @@ export class LocalizationService {
 
   constructor(private translationService: TranslateService) { }
 
-  public initLocalization() {
-
+  public currentLocalization() {
+    return this.translationService.currentLang || this.translationService.defaultLang;
   }
 
   public setLocalization(locale: Localization) {

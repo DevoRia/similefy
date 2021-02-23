@@ -5,7 +5,7 @@
     "logout": "Sign out",
     "signup": "Sign up",
     "browseFiles": "Browse Files",
-    "dropFile": "Drop simple file",
+    "dropFile": "Create a project",
     "name": "Name",
     "remove": "Remove",
     "yes": "Yes",
@@ -33,6 +33,15 @@
   },
   "compare": {
     "placeholder": "Input some text..."
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "chooseLanguage": "Choose language"
+  },
+  "localizations": {
+    "en": "English",
+    "ua": "Ukrainian"
   },
   "upload": {
     "folderNotSupport": "Folder is not supported",
