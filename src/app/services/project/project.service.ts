@@ -40,8 +40,9 @@ export class ProjectService {
 
   update() {
     if (typeof this.project.source !== 'string') {
-      this.project.source[0] = this.compareService.doCompare(this.project.source)[0]
-      this.project.source[1] = this.compareService.doCompare(this.project.source)[1]
+      const compared = this.compareService.doCompare(this.project.source)
+      this.project.source[0] = compared[0]
+      this.project.source[1] = compared[1]
       this.compareTexts$[0].next(this.project.source[0])
       this.compareTexts$[1].next(this.project.source[1])
     }

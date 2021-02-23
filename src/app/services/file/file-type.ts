@@ -1,7 +1,7 @@
 export enum FileType {
   TXT = 'text/plain',
-  HTML = 'text/html',
-  JSON = 'application/json',
+  //TODO not supported yet HTML = 'text/html',
+  // JSON = 'application/json',
 }
 
 export enum FileExt {
