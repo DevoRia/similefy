@@ -10,7 +10,7 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export class CompareAreaComponent implements OnInit {
 
   @Input()
-  private index: number;
+  index: number;
 
   public Editor = ClassicEditor;
   content: string = '';

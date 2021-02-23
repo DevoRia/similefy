@@ -21,8 +21,14 @@
   ::ng-deep.ck {
     p {
       strong {
+        font-style: normal;
         color: white;
         background: red;
+      }
+      i {
+        font-style: normal;
+        color: white;
+        background: #188851;
       }
     }
   }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {ProjectRepositoryService} from "./project-repository.service";
 import {Project} from "../../models/project/project";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {map, tap} from "rxjs/operators";
 import {CompareService} from "../compare/compare.service";
 
@@ -11,6 +11,7 @@ import {CompareService} from "../compare/compare.service";
 export class ProjectService {
 
   private project: Project;
+  private compareTexts$ = [new BehaviorSubject<string>(''), new BehaviorSubject<string>('')]
 
   constructor(private projectRepo: ProjectRepositoryService,
               private compareService: CompareService) { }
@@ -33,10 +34,17 @@ export class ProjectService {
   }
 
   getContentByAreaIndex(index: number): Observable<string> {
-    return new Observable(s => s.next(this.project.source[index]));
+    this.compareTexts$[index].next(this.project.source[index])
+    return this.compareTexts$[index]
   }
 
   update() {
+    if (typeof this.project.source !== 'string') {
+      this.project.source[0] = this.compareService.doCompare(this.project.source)[0]
+      this.project.source[1] = this.compareService.doCompare(this.project.source)[1]
+      this.compareTexts$[0].next(this.project.source[0])
+      this.compareTexts$[1].next(this.project.source[1])
+    }
     return this.projectRepo.update(this.project.id, this.project)
   }
 

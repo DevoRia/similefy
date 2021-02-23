@@ -2,6 +2,7 @@
   <mat-card>
     <app-loader *ngIf="loading" class="loader"></app-loader>
     <ckeditor
+      [disabled]="index === 0"
       (change)="onInput()"
       (blur)="onChange()"
       class="textarea"
