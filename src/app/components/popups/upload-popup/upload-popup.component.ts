@@ -13,6 +13,7 @@ import {MatDialog} from "@angular/material/dialog";
 export class UploadPopupComponent implements OnInit {
 
   name: string;
+  contentToCompare: string;
   public files: File[] = [];
   private filesLength: number;
 
@@ -23,6 +24,17 @@ export class UploadPopupComponent implements OnInit {
               private projectService: ProjectService) { }
 
   ngOnInit(): void {
+  }
+
+  public async create() {
+    if (this.contentToCompare.length) {
+      try {
+        this.dialog.closeAll()
+        await this.projectService.createFromText(this.name, this.contentToCompare)
+      } catch (e) {
+        this.notifyService.showInfo(e.message);
+      }
+    }
   }
 
   public async dropped(files: NgxFileDropEntry[]) {

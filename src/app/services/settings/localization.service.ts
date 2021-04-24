@@ -15,6 +15,7 @@ export class LocalizationService {
   }
 
   public setLocalization(locale: Localization) {
+    localStorage.setItem('lang', locale);
     this.translationService.use(locale);
     moment.locale(locale);
   }

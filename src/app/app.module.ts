@@ -97,7 +97,7 @@ export function playerFactory() {
     CKEditorModule,
     LottieModule.forRoot({ player: playerFactory }),
     TranslateModule.forRoot({
-      defaultLanguage: 'en',
+      defaultLanguage: localStorage.getItem('lang') || 'en',
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,

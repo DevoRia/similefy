@@ -5,12 +5,21 @@
   <mat-form-field class="project-name">
     <input [(ngModel)]="name" type="text" matInput placeholder="{{'common.name' | translate}}">
   </mat-form-field>
-  <div *ngIf="name" class="dnd" >
-    <ngx-file-drop dropZoneClassName="dnd-area" (onFileDrop)="dropped($event)"
-                   (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
-      <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
-        <button class="browseBtn" mat-button type="button" (click)="openFileSelector()">{{"common.browseFiles" | translate}}</button>
-      </ng-template>
-    </ngx-file-drop>
+  <div class="content-area" *ngIf="name">
+      <mat-form-field class="dnd textareaSize">
+        <textarea role="textbox" [(ngModel)]="contentToCompare" matInput class="browseBtn" placeholder="{{'compare.placeholder' | translate }}"></textarea>
+      </mat-form-field>
+    <div *ngIf="!contentToCompare" class="or-block separator">{{'common.or' | translate }}</div>
+    <div *ngIf="!contentToCompare" class="dnd">
+      <ngx-file-drop dropZoneClassName="dnd-area" (onFileDrop)="dropped($event)"
+                     (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+        <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+          <button class="browseBtn" mat-button type="button" (click)="openFileSelector()">{{"common.browseFiles" | translate}}</button>
+        </ng-template>
+      </ngx-file-drop>
+    </div>
+    <div *ngIf="contentToCompare">
+      <button mat-flat-button color="primary" (click)="create()">{{"library.newProject" | translate}}</button>
+    </div>
   </div>
 </div>

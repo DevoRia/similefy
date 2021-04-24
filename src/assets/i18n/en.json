@@ -9,7 +9,8 @@
     "name": "Name",
     "remove": "Remove",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "or": "Or"
   },
   "login": {
     "popupDescription": "Choose sign-in method",
