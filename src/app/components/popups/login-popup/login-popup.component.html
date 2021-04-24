@@ -10,7 +10,7 @@
     <input matInput placeholder="{{'login.email' | translate}}" [(ngModel)]="email">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="{{'login.password' | translate}}" [(ngModel)]="password">
+    <input matInput type="password" placeholder="{{'login.password' | translate}}" [(ngModel)]="password">
   </mat-form-field>
   <div class="submit-email-login">
     <button mat-button color="primary" (click)="auth(authModes().EMAIL)">
