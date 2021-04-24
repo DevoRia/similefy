@@ -6,8 +6,27 @@
   width: 300px;
 }
 
+.textareaSize {
+  ::ng-deep.mat-form-field-flex {
+  }
+  textarea {
+    resize: none;
+  }
+}
+
+.or-block {
+  width: 100%;
+  padding-bottom: 30px;
+}
+
 .project-name {
   width: 300px;
+}
+
+.content-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -25,4 +44,25 @@
     transform: scale(1);
     filter: blur(0);
   }
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 2px solid #000;
+}
+
+.separator:not(:empty)::before {
+  margin-right: .5em;
+}
+
+.separator:not(:empty)::after {
+  margin-left: .5em;
 }

@@ -4,6 +4,7 @@ import {Project} from "../../models/project/project";
 import {BehaviorSubject, Observable} from "rxjs";
 import {map, tap} from "rxjs/operators";
 import {CompareService} from "../compare/compare.service";
+import {FileType} from "../file/file-type";
 
 @Injectable({
   providedIn: 'root'
@@ -66,6 +67,16 @@ export class ProjectService {
       }
     });
     await Promise.all(promises);
+    project.source = JSON.stringify(project.source);
+    return this.projectRepo.create(project).toPromise();
+  }
+
+  async createFromText(name: string, content: string): Promise<Project> {
+    const project: Project = {
+      name: name,
+      type: FileType.TXT,
+      source: [content]
+    }
     project.source = JSON.stringify(project.source);
     return this.projectRepo.create(project).toPromise();
   }
